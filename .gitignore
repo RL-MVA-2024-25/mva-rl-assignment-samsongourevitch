@@ -1,3 +1,9 @@
+# notebooks
+*.ipynb
+
+# opt env
+opt_env_hiv.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
