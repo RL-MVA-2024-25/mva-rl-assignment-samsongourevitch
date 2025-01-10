@@ -7,7 +7,7 @@ import torch.optim as optim
 from collections import deque
 from gymnasium.wrappers import TimeLimit
 from env_hiv import HIVPatient
-from opt_env_hiv import FastHIVPatient
+# from opt_env_hiv import FastHIVPatient
 from evaluate import evaluate_HIV, evaluate_HIV_population
 import matplotlib.pyplot as plt
 from torch.optim.lr_scheduler import CosineAnnealingLR
@@ -143,8 +143,8 @@ class ProjectAgent:
         val_rewards_rand = []
         step = 0
         best_val_reward = 0
-        env = FastHIVPatient(domain_randomization=False)
-        env_rand = FastHIVPatient(domain_randomization=True)
+        env = HIVPatient(domain_randomization=False)
+        env_rand = HIVPatient(domain_randomization=True)
         for episode in range(num_episodes):
             total_reward = 0
             if episode%3 == 0:
