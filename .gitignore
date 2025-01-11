@@ -1,6 +1,9 @@
 # notebooks
 *.ipynb
 
+# images
+*.png
+
 # opt env
 opt_env_hiv.py
 

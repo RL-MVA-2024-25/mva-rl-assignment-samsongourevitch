@@ -147,10 +147,10 @@ class ProjectAgent:
         env_rand = HIVPatient(domain_randomization=True)
         for episode in range(num_episodes):
             total_reward = 0
-            if episode%3 == 0:
-                cur_env = env_rand
-            else:
-                cur_env = env
+            # if episode%3 == 0:
+            #     cur_env = env_rand
+            # else:
+            cur_env = env
             state, _ = cur_env.reset()
 
             for t in range(max_timesteps):
