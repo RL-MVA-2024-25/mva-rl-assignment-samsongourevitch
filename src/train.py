@@ -29,6 +29,16 @@ params = {
     "CRITERION": nn.MSELoss(),
 }
 
+def seed_everything(seed: int = 42):
+    random.seed(seed)
+    os.environ["PYTHONHASHSEED"] = str(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed(seed)
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+    torch.cuda.manual_seed_all(seed)
+
 # Neural Network for DQN
 class DQNetwork(nn.Module):
     def __init__(self, state_size, action_size):
@@ -138,6 +148,8 @@ class ProjectAgent:
         """
         print(f"Training for {num_episodes} episodes...")
 
+        seed_everything()
+
         train_rewards = []
         val_rewards_fixed = []
         val_rewards_rand = []
@@ -147,10 +159,10 @@ class ProjectAgent:
         env_rand = HIVPatient(domain_randomization=True)
         for episode in range(num_episodes):
             total_reward = 0
-            # if episode%3 == 0:
-            #     cur_env = env_rand
-            # else:
-            cur_env = env
+            if episode%6 == 0:
+                cur_env = env_rand
+            else:
+                cur_env = env
             state, _ = cur_env.reset()
 
             for t in range(max_timesteps):

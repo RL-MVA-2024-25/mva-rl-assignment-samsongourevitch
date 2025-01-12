@@ -4,7 +4,6 @@ import gymnasium as gym
 from gymnasium.wrappers import TimeLimit
 
 from env_hiv import HIVPatient
-# from opt_env_hiv import FastHIVPatient
 from interface import Agent
 
 
